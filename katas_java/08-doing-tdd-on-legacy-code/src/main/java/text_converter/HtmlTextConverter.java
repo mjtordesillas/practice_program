@@ -6,7 +6,7 @@ public class HtmlTextConverter
 {
     private String fileName;
 	private BufferedWriter writer;
-	private BufferedReader reader;
+	private FileInput input;
 
 	public HtmlTextConverter(String fullFilenameWithPath)
     {
@@ -35,7 +35,7 @@ public class HtmlTextConverter
 	}
 
 	protected void initializeReader(String htmlFile) throws IOException {
-		reader = new BufferedReader(new FileReader(htmlFile));
+		input = new FileInput(htmlFile);
 	}
 
 	protected void initializeWriter(String htmlFile) throws IOException {
@@ -51,7 +51,7 @@ public class HtmlTextConverter
 	}
 
 	protected String readLine() throws IOException {
-		return reader.readLine();
+		return input.readLine();
 	}
 
 	public String getFilename() {

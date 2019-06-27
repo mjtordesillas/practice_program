@@ -29,6 +29,7 @@ public class TestingHtmlTextConverter extends HtmlTextConverter {
     }
 
     protected void initializeReader(String htmlFile) throws IOException {
+
     }
 
     protected void initializeWriter(String htmlFile) throws IOException {
