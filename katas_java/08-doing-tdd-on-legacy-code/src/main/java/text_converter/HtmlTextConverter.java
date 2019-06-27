@@ -24,6 +24,7 @@ public class HtmlTextConverter
 			output = output.replace("&", "&amp;");
 			output = output.replace("<", "&lt;");
 			output = output.replace(">", "&gt;");
+			output = output.replace("\"", "&quot;");
 			write(output);
 			write("<br />");
 			line = readLine();
