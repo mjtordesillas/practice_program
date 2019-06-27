@@ -58,10 +58,6 @@ public class HtmlTextConverter
 		return input.readLine();
 	}
 
-	public String getFilename() {
-		return this.fileName;
-	}
-
 	public static void main(String[] args) {
 		try {
 			HtmlTextConverter htmlTextConverter = new HtmlTextConverter("res/example.txt");
