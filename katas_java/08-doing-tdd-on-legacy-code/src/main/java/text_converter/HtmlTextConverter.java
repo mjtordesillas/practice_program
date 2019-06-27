@@ -13,8 +13,6 @@ public class HtmlTextConverter
 		initializeReader(this.fileName);
     }
 
-
-
     public void convertToHtml(String htmlFile) throws IOException{
 		initializeWriter(this.fileName);
 

@@ -7,14 +7,8 @@ public class TestingHtmlTextConverter extends HtmlTextConverter {
 
     ArrayList<String> stringsWritten;
 
-    String lineToReturn = null;
     String outputFile = null;
     private InputInterface input;
-
-    public TestingHtmlTextConverter(String fullFilenameWithPath) throws IOException {
-        super(fullFilenameWithPath);
-        stringsWritten = new ArrayList<>();
-    }
 
     public TestingHtmlTextConverter(String inputFileName, InputInterface input) throws IOException {
         super(inputFileName);
@@ -30,12 +24,7 @@ public class TestingHtmlTextConverter extends HtmlTextConverter {
     }
 
     protected String readLine() throws IOException {
-        if (input != null) {
             return input.readLine();
-        }
-        String line = lineToReturn;
-        lineToReturn = null;
-        return line;
     }
 
     protected void initializeReader(String htmlFile) throws IOException {

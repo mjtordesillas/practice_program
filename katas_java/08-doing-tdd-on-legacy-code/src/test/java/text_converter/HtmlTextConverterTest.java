@@ -18,7 +18,6 @@ public class HtmlTextConverterTest {
     @Before
     public void setUp() throws Exception {
         inputFileName = "any name";
-        converter = new TestingHtmlTextConverter(inputFileName);
         input = mock(InputInterface.class);
     }
 
@@ -72,7 +71,6 @@ public class HtmlTextConverterTest {
     public void output_file_has_the_same_name_as_input_file() throws IOException
     {
         converter = new TestingHtmlTextConverter(inputFileName, input);
-        converter.lineToReturn = "any line";
 
         converter.convertToHtml("");
 
