@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileInput {
+public class FileInput implements InputInterface {
 
     private final BufferedReader reader;
 
@@ -13,6 +13,7 @@ public class FileInput {
         reader = new BufferedReader(new FileReader(htmlFile));
     }
 
+    @Override
     public String readLine() throws IOException {
         return reader.readLine();
     }

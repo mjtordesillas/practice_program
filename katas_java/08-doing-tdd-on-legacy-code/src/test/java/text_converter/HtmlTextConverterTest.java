@@ -6,25 +6,29 @@ import java.io.IOException;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class HtmlTextConverterTest {
 
     private TestingHtmlTextConverter converter;
     private String inputFileName;
+    private InputInterface input;
 
     @Before
     public void setUp() throws Exception {
         inputFileName = "any name";
         converter = new TestingHtmlTextConverter(inputFileName);
+        input = mock(InputInterface.class);
     }
 
     @Test
     public void converts_ampersand_symbol() throws IOException
     {
-        converter.lineToReturn = "&";
+        when(input.readLine()).thenReturn("&", null);
+        converter = new TestingHtmlTextConverter(inputFileName, input);
 
         converter.convertToHtml("any output file name");
-
         assertTrue(converter.stringsWritten.contains("&amp;"));
         assertFalse(converter.stringsWritten.contains("&"));
     }
@@ -32,7 +36,8 @@ public class HtmlTextConverterTest {
     @Test
     public void converts_less_than_symbol() throws IOException
     {
-        converter.lineToReturn = "<";
+        when(input.readLine()).thenReturn("<", null);
+        converter = new TestingHtmlTextConverter(inputFileName, input);
 
         converter.convertToHtml("any output file name");
 
@@ -43,7 +48,8 @@ public class HtmlTextConverterTest {
     @Test
     public void converts_greater_than_symbol() throws IOException
     {
-        converter.lineToReturn = ">";
+        when(input.readLine()).thenReturn(">", null);
+        converter = new TestingHtmlTextConverter(inputFileName, input);
 
         converter.convertToHtml("any output file name");
 
@@ -54,8 +60,8 @@ public class HtmlTextConverterTest {
     @Test
     public void converts_double_quote_symbol() throws IOException
     {
-        converter.lineToReturn = "\"";
-
+        when(input.readLine()).thenReturn("\"", null);
+        converter = new TestingHtmlTextConverter(inputFileName, input);
         converter.convertToHtml("any output file name");
 
         assertThat(converter.stringsWritten.contains("&quot;"), is(true));
@@ -65,24 +71,11 @@ public class HtmlTextConverterTest {
     @Test
     public void output_file_has_the_same_name_as_input_file() throws IOException
     {
-        converter = new TestingHtmlTextConverter(inputFileName);
+        converter = new TestingHtmlTextConverter(inputFileName, input);
         converter.lineToReturn = "any line";
 
         converter.convertToHtml("");
 
         assertThat(converter.outputFile, is(inputFileName));
     }
-
-//    @Test
-//    public void can_read_from_console() throws IOException
-//    {
-//
-//        converter = new TestingHtmlTextConverter(inputFileName, );
-//
-//
-//
-//        converter.convertToHtml("");
-//
-//        assertThat(converter.outputFile, is(inputFileName));
-//    }
 }

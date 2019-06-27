@@ -8,14 +8,15 @@ public class HtmlTextConverter
 	private BufferedWriter writer;
 	private FileInput input;
 
-	public HtmlTextConverter(String fullFilenameWithPath)
-    {
+	public HtmlTextConverter(String fullFilenameWithPath) throws IOException {
         this.fileName = fullFilenameWithPath;
+		initializeReader(this.fileName);
     }
+
+
 
     public void convertToHtml(String htmlFile) throws IOException{
 		initializeWriter(this.fileName);
-		initializeReader(this.fileName);
 
 		String line = readLine();
 		write("<body>");
