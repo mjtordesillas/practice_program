@@ -14,7 +14,7 @@ public class HtmlTextConverter
     }
 
     public void convertToHtml(String htmlFile) throws IOException{
-		initializeWriterAndReader(htmlFile);
+		initializeWriterAndReader(this.fileName);
 
 		String line = readLine();
 		write("<body>");
@@ -47,7 +47,7 @@ public class HtmlTextConverter
 
 	protected void initializeWriterAndReader(String htmlFile) throws IOException {
 		writer = new BufferedWriter(new FileWriter(htmlFile));
-		reader = new BufferedReader(new FileReader(fileName));
+		reader = new BufferedReader(new FileReader(htmlFile));
 	}
 
 	public String getFilename() {

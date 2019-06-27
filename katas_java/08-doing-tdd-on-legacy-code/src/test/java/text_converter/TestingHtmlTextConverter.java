@@ -8,6 +8,7 @@ public class TestingHtmlTextConverter extends HtmlTextConverter {
     ArrayList<String> stringsWritten;
 
     String lineToReturn = null;
+    String outputFile = null;
 
     public TestingHtmlTextConverter(String fullFilenameWithPath) {
         super(fullFilenameWithPath);
@@ -28,6 +29,7 @@ public class TestingHtmlTextConverter extends HtmlTextConverter {
     }
 
     protected void initializeWriterAndReader(String htmlFile) throws IOException {
+        outputFile = htmlFile;
     }
 
 }
