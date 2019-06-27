@@ -8,11 +8,9 @@ public class TestingHtmlTextConverter extends HtmlTextConverter {
     ArrayList<String> stringsWritten;
 
     String outputFile = null;
-    private InputInterface input;
 
     public TestingHtmlTextConverter(String inputFileName, InputInterface input) throws IOException {
-        super(inputFileName);
-        this.input = input;
+        super(inputFileName, input);
         stringsWritten = new ArrayList<>();
     }
 
@@ -21,10 +19,6 @@ public class TestingHtmlTextConverter extends HtmlTextConverter {
 
     protected void write(String htmlString) throws IOException {
         stringsWritten.add(htmlString);
-    }
-
-    protected String readLine() throws IOException {
-            return input.readLine();
     }
 
     protected void initializeReader(String htmlFile) throws IOException {

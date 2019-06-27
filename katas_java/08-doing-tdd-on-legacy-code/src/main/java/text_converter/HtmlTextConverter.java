@@ -6,12 +6,17 @@ public class HtmlTextConverter
 {
     private String fileName;
 	private BufferedWriter writer;
-	private FileInput input;
+	private InputInterface input;
 
 	public HtmlTextConverter(String fullFilenameWithPath) throws IOException {
         this.fileName = fullFilenameWithPath;
 		initializeReader(this.fileName);
     }
+
+	public HtmlTextConverter(String fullFilenameWithPath, InputInterface input) throws IOException {
+		this.fileName = fullFilenameWithPath;
+		this.input = input;
+	}
 
     public void convertToHtml(String htmlFile) throws IOException{
 		initializeWriter(this.fileName);
