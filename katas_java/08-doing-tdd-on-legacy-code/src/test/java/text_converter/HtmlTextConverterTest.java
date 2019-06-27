@@ -72,4 +72,17 @@ public class HtmlTextConverterTest {
 
         assertThat(converter.outputFile, is(inputFileName));
     }
+
+//    @Test
+//    public void can_read_from_console() throws IOException
+//    {
+//
+//        converter = new TestingHtmlTextConverter(inputFileName, );
+//
+//
+//
+//        converter.convertToHtml("");
+//
+//        assertThat(converter.outputFile, is(inputFileName));
+//    }
 }
